@@ -18,7 +18,7 @@ Solution We can use git to ensure this.</description>
     </item>
     
     <item>
-      <title>Spring Web容器创建及管理</title>
+      <title>SpringWeb中Servlet, Filter及Bean的管理</title>
       <link>https://dennisxie.github.io/post/tech/java/spring_web_containers/spring_web_containers/</link>
       <pubDate>Wed, 08 Jun 2022 21:49:58 +0800</pubDate>
       

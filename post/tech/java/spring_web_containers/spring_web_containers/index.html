@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Spring Web容器创建及管理 | Dennis&#39;s Grocery</title>
+<title>SpringWeb中Servlet, Filter及Bean的管理 | Dennis&#39;s Grocery</title>
 <meta name="keywords" content="">
 <meta name="description" content="1 背景 1.1 问题 最近接触到两个问题。问题本身并不难，但是我自己因为对Servlet和Spring不够熟没有回答正确。问题如下：
 Spring Web程序中, Filter对象能不能使用Spring容器中的Bean？ Spring Web程序中, 能不能给Service Bean注入Controller Bean? 1.2.2 问题2 这个问题需要分情况
@@ -61,7 +61,7 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer { 
         }
 
     </style>
-</noscript><meta property="og:title" content="Spring Web容器创建及管理" />
+</noscript><meta property="og:title" content="SpringWeb中Servlet, Filter及Bean的管理" />
 <meta property="og:description" content="1 背景 1.1 问题 最近接触到两个问题。问题本身并不难，但是我自己因为对Servlet和Spring不够熟没有回答正确。问题如下：
 Spring Web程序中, Filter对象能不能使用Spring容器中的Bean？ Spring Web程序中, 能不能给Service Bean注入Controller Bean? 1.2.2 问题2 这个问题需要分情况
 通过Spring Boot加载的Spring Web程序 通过Servlet容器加载的Spring Web程序取决于是否有做Context继承 2 分析 备注: 本文基于Servlet 3.0及Spring Web MVC 5.3.x分析
@@ -74,7 +74,7 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer { 
 <meta property="article:modified_time" content="2022-06-08T21:49:58&#43;08:00" /><meta property="og:site_name" content="Software Engineering" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Spring Web容器创建及管理"/>
+<meta name="twitter:title" content="SpringWeb中Servlet, Filter及Bean的管理"/>
 <meta name="twitter:description" content="1 背景 1.1 问题 最近接触到两个问题。问题本身并不难，但是我自己因为对Servlet和Spring不够熟没有回答正确。问题如下：
 Spring Web程序中, Filter对象能不能使用Spring容器中的Bean？ Spring Web程序中, 能不能给Service Bean注入Controller Bean? 1.2.2 问题2 这个问题需要分情况
 通过Spring Boot加载的Spring Web程序 通过Servlet容器加载的Spring Web程序取决于是否有做Context继承 2 分析 备注: 本文基于Servlet 3.0及Spring Web MVC 5.3.x分析
@@ -97,7 +97,7 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer { 
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Spring Web容器创建及管理",
+      "name": "SpringWeb中Servlet, Filter及Bean的管理",
       "item": "https://dennisxie.github.io/post/tech/java/spring_web_containers/spring_web_containers/"
     }
   ]
@@ -107,8 +107,8 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer { 
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Spring Web容器创建及管理",
-  "name": "Spring Web容器创建及管理",
+  "headline": "SpringWeb中Servlet, Filter及Bean的管理",
+  "name": "SpringWeb中Servlet, Filter及Bean的管理",
   "description": "1 背景 1.1 问题 最近接触到两个问题。问题本身并不难，但是我自己因为对Servlet和Spring不够熟没有回答正确。问题如下：\nSpring Web程序中, Filter对象能不能使用Spring容器中的Bean？ Spring Web程序中, 能不能给Service Bean注入Controller Bean? 1.2.2 问题2 这个问题需要分情况\n通过Spring Boot加载的Spring Web程序 通过Servlet容器加载的Spring Web程序取决于是否有做Context继承 2 分析 备注: 本文基于Servlet 3.0及Spring Web MVC 5.3.x分析\n2.1 通过Servlet容器加载Servlet 2.1.1 Servlet 3.0加载Servlet的方式 Servlet 3.0开始支持通过SPI加载Servlet的方案 Spring通过 org.springframework.web.SpringServletContainerInitializer 实现了Servlet 3.0中的 ServletContainerInitializer 接口。 SpringServletContainerInitializer 则会在初始化的时候去加载所有的实现了 org.springframework.web.WebApplicationInitializer 的类。 用户通过实现该类即可创建和加载Servlet对象。\n2.1.2 创建单Spring容器的Servlet 官方代码示例如下：\npublic class MyWebApplicationInitializer implements WebApplicationInitializer { @Override public void onStartup(ServletContext servletContext) { // Load Spring web application configuration AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext(); context.",
   "keywords": [
     
@@ -188,7 +188,7 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer { 
   <header class="post-header">
     
     <h1 class="post-title">
-      Spring Web容器创建及管理
+      SpringWeb中Servlet, Filter及Bean的管理
     </h1>
     <div class="post-meta"><span title='2022-06-08 21:49:58 +0800 CST'>June 8, 2022</span>
 
