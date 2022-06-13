@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on Dennis&#39;s Grocery</title>
-    <link>https://dennisxie.github.io/categories/</link>
+    <link>https://dennisxie.github.io/zh/categories/</link>
     <description>Recent content in Categories on Dennis&#39;s Grocery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Jun 2022 12:39:44 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Jun 2022 21:49:58 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/zh/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>tech</title>
-      <link>https://dennisxie.github.io/categories/tech/</link>
-      <pubDate>Thu, 09 Jun 2022 12:39:44 +0800</pubDate>
+      <link>https://dennisxie.github.io/zh/categories/tech/</link>
+      <pubDate>Wed, 08 Jun 2022 21:49:58 +0800</pubDate>
       
-      <guid>https://dennisxie.github.io/categories/tech/</guid>
+      <guid>https://dennisxie.github.io/zh/categories/tech/</guid>
       <description></description>
     </item>
     

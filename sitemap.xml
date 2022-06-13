@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://dennisxie.github.io/</loc>
-    <lastmod>2022-06-09T12:39:44+08:00</lastmod>
-  </url><url>
-    <loc>https://dennisxie.github.io/post/problems/hugo_integrity_problem/</loc>
-    <lastmod>2022-06-09T12:39:44+08:00</lastmod>
-  </url><url>
-    <loc>https://dennisxie.github.io/post/</loc>
-    <lastmod>2022-06-09T12:39:44+08:00</lastmod>
-  </url><url>
-    <loc>https://dennisxie.github.io/post/tech/java/spring_web_containers/spring_web_containers/</loc>
-    <lastmod>2022-06-08T21:49:58+08:00</lastmod>
-  </url><url>
-    <loc>https://dennisxie.github.io/post/testpage/</loc>
-    <lastmod>2022-06-08T17:40:14+08:00</lastmod>
-  </url><url>
-    <loc>https://dennisxie.github.io/categories/</loc>
-  </url><url>
-    <loc>https://dennisxie.github.io/tags/</loc>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>https://dennisxie.github.io/en/sitemap.xml</loc>
+    
+      <lastmod>2022-06-09T12:39:44+08:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://dennisxie.github.io/zh/sitemap.xml</loc>
+    
+      <lastmod>2022-06-08T21:49:58+08:00</lastmod>
+    
+  </sitemap>
+  
+</sitemapindex>

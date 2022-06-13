@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>java on Dennis&#39;s Grocery</title>
+    <link>https://dennisxie.github.io/zh/tags/java/</link>
+    <description>Recent content in java on Dennis&#39;s Grocery</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jun 2022 21:49:58 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/zh/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spring Web容器创建及管理</title>
+      <link>https://dennisxie.github.io/zh/post/tech/java/spring_web_containers/spring_web_containers/</link>
+      <pubDate>Wed, 08 Jun 2022 21:49:58 +0800</pubDate>
+      
+      <guid>https://dennisxie.github.io/zh/post/tech/java/spring_web_containers/spring_web_containers/</guid>
+      <description>1 背景 1.1 问题 最近接触到两个问题。问题本身并不难，但是我自己因为对Servlet和Spring不够熟没有回答正确。问题如下：
+Spring Web程序中, Filter对象能不能使用Spring容器中的Bean？ Spring Web程序中, 能不能给Service Bean注入Controller Bean? 1.2 问题拆解 这个问题需要分情况
+通过Spring Boot加载的Spring Web程序 通过Servlet容器加载的Spring Web程序取决于是否有做Context继承 2 分析 备注: 本文基于Servlet 3.0及Spring Web MVC 5.3.x分析
+2.1 通过Servlet容器加载Servlet 2.1.1 Servlet 3.0加载Servlet的方式 Servlet 3.0开始支持通过SPI加载Servlet的方案 Spring通过 org.springframework.web.SpringServletContainerInitializer 实现了Servlet 3.0中的 ServletContainerInitializer 接口。 SpringServletContainerInitializer 则会在初始化的时候去加载所有的实现了 org.springframework.web.WebApplicationInitializer 的类。 用户通过实现该类即可创建和加载Servlet对象。
+2.1.2 创建单Spring容器的Servlet 官方代码示例如下：
+public class MyWebApplicationInitializer implements WebApplicationInitializer { @Override public void onStartup(ServletContext servletContext) { // Load Spring web application configuration AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext(); context.</description>
+    </item>
+    
+  </channel>
+</rss>
