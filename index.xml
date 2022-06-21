@@ -6,7 +6,18 @@
     <description>Recent content on Dennis&#39;s Grocery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Jun 2022 12:39:44 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Jun 2022 16:32:52 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multi-Stage Builds of Docker</title>
+      <link>https://dennisxie.github.io/post/tech/docker/multi_stage_build/</link>
+      <pubDate>Tue, 21 Jun 2022 16:32:52 +0800</pubDate>
+      
+      <guid>https://dennisxie.github.io/post/tech/docker/multi_stage_build/</guid>
+      <description>Background What can we do if we should merge several Docker images to a single Docker image for some reason?
+Solution We can use multi-stage builds of Docker.
+Multi-stage builds Problem solved by multi-stage builds It&amp;rsquo;s very common to have different images for building, testing, and production. Different images contain different tools. Building images may contain building tools such as GCC, Gradle, and so on. Testing images may contain perf tools, analysis tools, and so on.</description>
+    </item>
+    
     <item>
       <title>Hugo Integrity Problem</title>
       <link>https://dennisxie.github.io/post/problems/hugo_integrity_problem/</link>

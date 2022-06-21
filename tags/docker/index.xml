@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>tech on Dennis&#39;s Grocery</title>
-    <link>https://dennisxie.github.io/categories/tech/</link>
-    <description>Recent content in tech on Dennis&#39;s Grocery</description>
+    <title>docker on Dennis&#39;s Grocery</title>
+    <link>https://dennisxie.github.io/tags/docker/</link>
+    <description>Recent content in docker on Dennis&#39;s Grocery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Jun 2022 16:32:52 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Jun 2022 16:32:52 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Multi-Stage Builds of Docker</title>
       <link>https://dennisxie.github.io/post/tech/docker/multi_stage_build/</link>
@@ -16,16 +16,6 @@
       <description>Background What can we do if we should merge several Docker images to a single Docker image for some reason?
 Solution We can use multi-stage builds of Docker.
 Multi-stage builds Problem solved by multi-stage builds It&amp;rsquo;s very common to have different images for building, testing, and production. Different images contain different tools. Building images may contain building tools such as GCC, Gradle, and so on. Testing images may contain perf tools, analysis tools, and so on.</description>
-    </item>
-    
-    <item>
-      <title>Hugo Integrity Problem</title>
-      <link>https://dennisxie.github.io/post/problems/hugo_integrity_problem/</link>
-      <pubDate>Thu, 09 Jun 2022 12:39:44 +0800</pubDate>
-      
-      <guid>https://dennisxie.github.io/post/problems/hugo_integrity_problem/</guid>
-      <description>The problem of integrity When you maintain your Hugo project both on Windows and Linux/macOS, you may get this error. The problem is caused by the default EOL character. The different EOL characters in the file will produce different SHA-256 hash codes. So what needs to do is to force the files to have LF or CRLF at the end of the line.
-Solution We can use git to ensure this.</description>
     </item>
     
   </channel>
