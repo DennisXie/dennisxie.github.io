@@ -149,7 +149,7 @@ Spring Web程序中, Filter对象能不能使用Spring容器中的Bean？ Spring
 通过Spring Boot加载的Spring Web程序 通过Servlet容器加载的Spring Web程序取决于是否有做Context继承 2 分析 备注: 本文基于Servlet 3.0及Spring Web MVC 5.3.x分析
 2.1 通过Servlet容器加载Servlet 2.1.1 Servlet 3.0加载Servlet的方式 Servlet 3.0开始支持通过SPI加载Servlet的方案 Spring通过 org.springframework.web.SpringServletContainerInitializer 实现了Servlet 3.0中的 ServletContainerInitializer 接口。 SpringServletContainerInitializer 则会在初始化的时候去加载所有的实现了 org.springframework.web.WebApplicationInitializer 的类。 用户通过实现该类即可创建和加载Servlet对象。
 2.1.2 创建单Spring容器的Servlet 官方代码示例如下：
-public class MyWebApplicationInitializer implements WebApplicationInitializer { @Override public void onStartup(ServletContext servletContext) { // Load Spring web application configuration AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext(); context....</p>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 public class MyWebApplicationInitializer implements WebApplicationInitializer { @Override public void onStartup(ServletContext servletContext) { // Load Spring web application configuration AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext(); context....</p>
   </div>
   <footer class="entry-footer"><span title='2022-06-08 21:49:58 +0800 CST'>六月 8, 2022</span></footer>
   <a class="entry-link" aria-label="post link to Spring Web程序中Servlet, Filter及Bean的管理" href="https://dennisxie.github.io/zh/post/tech/java/spring_web_containers/spring_web_containers/"></a>

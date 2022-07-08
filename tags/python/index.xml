@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>python on Dennis&#39;s Grocery</title>
+    <link>https://dennisxie.github.io/tags/python/</link>
+    <description>Recent content in python on Dennis&#39;s Grocery</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Jul 2022 13:01:16 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Create Python Bindings with Cython</title>
+      <link>https://dennisxie.github.io/post/tech/python/python_bindings_with_cython/</link>
+      <pubDate>Fri, 08 Jul 2022 13:01:16 +0800</pubDate>
+      
+      <guid>https://dennisxie.github.io/post/tech/python/python_bindings_with_cython/</guid>
+      <description>The basic usages of Cython to create Python bindings</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -17,9 +17,9 @@
 解决方案 使用Docker的多阶段构建。
 多阶段构建 多阶段构建解决的问题 通常来说服务构建、测试和部署一般会使用不同的镜像。其中不同的镜像会有一些不同的工具，如构建镜像会包含一些基础构建工具。测试镜像会包含一些分析测试结果的工具。部署镜像则是最精简的镜像，仅包含正常运行所需要的工具和环境等。
 在没有多阶段构建的情况下，我们可能会一个脚本来完成程序构建、测试镜像的生成和部署镜像的生成等工作。如下面的代码所示：
-docker build -t demo:build -f Dockerfile.build . docker container create --name demo demo:build docker container cp demo:/path/to/build/app ./app docker container rm -f demo docker build -t demo:deploy-latest -f Dockerfile . # copy the app into the deploy image 这样可以保证不同用途的镜像的精简程度，尤其是避免生产环境使用的镜像太肥。有了多阶段构建以后，我们就可以把这些操作移动到Docker镜像构建中去。
+1 2 3 4 5 docker build -t demo:build -f Dockerfile.build . docker container create --name demo demo:build docker container cp demo:/path/to/build/app ./app docker container rm -f demo docker build -t demo:deploy-latest -f Dockerfile . # copy the app into the deploy image 这样可以保证不同用途的镜像的精简程度，尤其是避免生产环境使用的镜像太肥。有了多阶段构建以后，我们就可以把这些操作移动到Docker镜像构建中去。
 使用方法 多阶段构建可以将Docker镜像的构建划分成多个不同阶段，不同阶段使用不同的基础镜像，后面的构建阶段可以使用前面阶段的一些结果。示例代码如下:
-FROM base0 # stage without name RUN build something FROM base1 AS stage1 # stage with a name RUN build other things FROM runningiamge:latest WORKDIR /running/path COPY --from=0 /base0/build/app .</description>
+1 2 3 4 5 6 7 8 9 10 11 FROM base0 # stage without name RUN build something FROM base1 AS stage1 # stage with a name RUN build other things FROM runningiamge:latest WORKDIR /running/path COPY --from=0 /base0/build/app .</description>
     </item>
     
   </channel>

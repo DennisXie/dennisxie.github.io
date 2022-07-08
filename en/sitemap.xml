@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://dennisxie.github.io/categories/</loc>
-    <lastmod>2022-06-21T16:32:52+08:00</lastmod>
+    <lastmod>2022-07-08T13:01:16+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -15,8 +15,11 @@
                 href="https://dennisxie.github.io/categories/"
                 />
   </url><url>
+    <loc>https://dennisxie.github.io/post/tech/python/python_bindings_with_cython/</loc>
+    <lastmod>2022-07-08T13:01:16+08:00</lastmod>
+  </url><url>
     <loc>https://dennisxie.github.io/</loc>
-    <lastmod>2022-06-21T16:32:52+08:00</lastmod>
+    <lastmod>2022-07-08T13:01:16+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -26,6 +29,48 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://dennisxie.github.io/"
+                />
+  </url><url>
+    <loc>https://dennisxie.github.io/post/</loc>
+    <lastmod>2022-07-08T13:01:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://dennisxie.github.io/zh/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://dennisxie.github.io/post/"
+                />
+  </url><url>
+    <loc>https://dennisxie.github.io/tags/python/</loc>
+    <lastmod>2022-07-08T13:01:16+08:00</lastmod>
+  </url><url>
+    <loc>https://dennisxie.github.io/tags/</loc>
+    <lastmod>2022-07-08T13:01:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://dennisxie.github.io/zh/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://dennisxie.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://dennisxie.github.io/categories/tech/</loc>
+    <lastmod>2022-07-08T13:01:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://dennisxie.github.io/zh/categories/tech/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://dennisxie.github.io/categories/tech/"
                 />
   </url><url>
     <loc>https://dennisxie.github.io/tags/docker/</loc>
@@ -52,45 +97,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://dennisxie.github.io/post/tech/docker/multi_stage_build/"
-                />
-  </url><url>
-    <loc>https://dennisxie.github.io/post/</loc>
-    <lastmod>2022-06-21T16:32:52+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://dennisxie.github.io/zh/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://dennisxie.github.io/post/"
-                />
-  </url><url>
-    <loc>https://dennisxie.github.io/tags/</loc>
-    <lastmod>2022-06-21T16:32:52+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://dennisxie.github.io/zh/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://dennisxie.github.io/tags/"
-                />
-  </url><url>
-    <loc>https://dennisxie.github.io/categories/tech/</loc>
-    <lastmod>2022-06-21T16:32:52+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://dennisxie.github.io/zh/categories/tech/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://dennisxie.github.io/categories/tech/"
                 />
   </url><url>
     <loc>https://dennisxie.github.io/post/problems/hugo_integrity_problem/</loc>
