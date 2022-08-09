@@ -6,7 +6,30 @@
     <description>Recent content in tech on Dennis&#39;s Grocery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Jun 2022 16:38:22 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/zh/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Aug 2022 16:05:32 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/zh/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git访问慢问题处理方法</title>
+      <link>https://dennisxie.github.io/zh/post/problems/git_proxy/</link>
+      <pubDate>Tue, 09 Aug 2022 16:05:32 +0800</pubDate>
+      
+      <guid>https://dennisxie.github.io/zh/post/problems/git_proxy/</guid>
+      <description>问题 某些时候，我们拉取Git仓库的代码会遇到一些奇奇怪怪的网络问题。这些问题包含但不限于以下一些问题：
+ 拉取速度特别慢 一些莫名其妙的TLS问题 网络中断  处理方式 遇到以上问题可以尝试使用代理来解决。在Github上，远程仓库一般使用https协议或者ssh协议。下面分别提供两种协议的代理的配置方法。
+https协议 为Git命令行添加http代理配置即可，命令如下:
+1  git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port   运行该命令后, ~/.gitconfig文件中会增加如下的配置:
+[http] proxy = http://proxyUsername:proxyPassword@proxy.server.com:port 通过该方法可以解决https协议的远程仓库访问问题。
+ssh协议 使用ssh协议的仓库链接一般为 git@github.com:gituser/repository.git。这里User为git，Host为github.com。因为使用了ssh协议，配置一下ssh的代理即可。首先打开或者创建 ~/.ssh/config 文件。以Github为例，填入以下内容:
+Host github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p 如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。
+ tips: git@github.com:gituser/repository.git实际上是ssh://git@github.com/gituser/repository.git的简写
+ 其他问题 我自己是在WSL2中配置的代理，代理服务运行在Windows中。这里就出现了WSL2访问Windows的服务的问题。在WSL2中，可以使用$(hostname).local来获取到Windows的域名。由于Windows的防火墙问题，这时实际上还是不能访问成功。有以下几种解决方案可以尝试：
+  增加防火墙入站规则(这个方法在我本机上还没有实验通过)
+  配置公用配置文件的受保护的网络连接 取消掉图中WSL的网络连接。这个方法需要每次重启后配置一次，因为WSL这个网络需要WSL启动后才会出现。
+  配置允许通过防火墙的应用
+控制面板-&amp;gt;系统和安全-&amp;gt;Windows Defender 防火墙-&amp;gt;允许的应用，把需要访问的服务的公有网络打开即可。如果你在用IDEA调试程序，那么你需要把Java的公有网络打开才能在WSL2里访问这个在调试的服务。
+  关闭公用网络防火墙
+  引用  Configure Git to use a proxy git 设置和取消代理  </description>
+    </item>
+    
     <item>
       <title>Docker多阶段构建</title>
       <link>https://dennisxie.github.io/zh/post/tech/docker/multi_stage_build/</link>
@@ -17,9 +40,9 @@
 解决方案 使用Docker的多阶段构建。
 多阶段构建 多阶段构建解决的问题 通常来说服务构建、测试和部署一般会使用不同的镜像。其中不同的镜像会有一些不同的工具，如构建镜像会包含一些基础构建工具。测试镜像会包含一些分析测试结果的工具。部署镜像则是最精简的镜像，仅包含正常运行所需要的工具和环境等。
 在没有多阶段构建的情况下，我们可能会一个脚本来完成程序构建、测试镜像的生成和部署镜像的生成等工作。如下面的代码所示：
-1 2 3 4 5 docker build -t demo:build -f Dockerfile.build . docker container create --name demo demo:build docker container cp demo:/path/to/build/app ./app docker container rm -f demo docker build -t demo:deploy-latest -f Dockerfile . # copy the app into the deploy image 这样可以保证不同用途的镜像的精简程度，尤其是避免生产环境使用的镜像太肥。有了多阶段构建以后，我们就可以把这些操作移动到Docker镜像构建中去。
+1 2 3 4 5  docker build -t demo:build -f Dockerfile.build . docker container create --name demo demo:build docker container cp demo:/path/to/build/app ./app docker container rm -f demo docker build -t demo:deploy-latest -f Dockerfile . # copy the app into the deploy image   这样可以保证不同用途的镜像的精简程度，尤其是避免生产环境使用的镜像太肥。有了多阶段构建以后，我们就可以把这些操作移动到Docker镜像构建中去。
 使用方法 多阶段构建可以将Docker镜像的构建划分成多个不同阶段，不同阶段使用不同的基础镜像，后面的构建阶段可以使用前面阶段的一些结果。示例代码如下:
-1 2 3 4 5 6 7 8 9 10 11 FROM base0 # stage without name RUN build something FROM base1 AS stage1 # stage with a name RUN build other things FROM runningiamge:latest WORKDIR /running/path COPY --from=0 /base0/build/app .</description>
+1 2 3 4 5 6 7 8 9 10 11  FROMbase0 # stage without nameRUN build somethingFROMbase1 AS stage1 # stage with a nameRUN build other thingsFROMrunningiamge:latestWORKDIR/running/pathCOPY --from=0 /base0/build/app .</description>
     </item>
     
     <item>
@@ -29,11 +52,11 @@
       
       <guid>https://dennisxie.github.io/zh/post/tech/java/spring_web_containers/spring_web_containers/</guid>
       <description>1 背景 1.1 问题 最近接触到两个问题。问题本身并不难，但是我自己因为对Servlet和Spring不够熟没有回答正确。问题如下：
-Spring Web程序中, Filter对象能不能使用Spring容器中的Bean？ Spring Web程序中, 能不能给Service Bean注入Controller Bean? 1.2 问题拆解 这个问题需要分情况
-通过Spring Boot加载的Spring Web程序 通过Servlet容器加载的Spring Web程序取决于是否有做Context继承 2 分析 备注: 本文基于Servlet 3.0及Spring Web MVC 5.3.x分析
-2.1 通过Servlet容器加载Servlet 2.1.1 Servlet 3.0加载Servlet的方式 Servlet 3.0开始支持通过SPI加载Servlet的方案 Spring通过 org.springframework.web.SpringServletContainerInitializer 实现了Servlet 3.0中的 ServletContainerInitializer 接口。 SpringServletContainerInitializer 则会在初始化的时候去加载所有的实现了 org.springframework.web.WebApplicationInitializer 的类。 用户通过实现该类即可创建和加载Servlet对象。
+ Spring Web程序中, Filter对象能不能使用Spring容器中的Bean？ Spring Web程序中, 能不能给Service Bean注入Controller Bean?  1.2 问题拆解 这个问题需要分情况
+ 通过Spring Boot加载的Spring Web程序 通过Servlet容器加载的Spring Web程序取决于是否有做Context继承  2 分析  备注: 本文基于Servlet 3.0及Spring Web MVC 5.3.x分析
+ 2.1 通过Servlet容器加载Servlet 2.1.1 Servlet 3.0加载Servlet的方式 Servlet 3.0开始支持通过SPI加载Servlet的方案 Spring通过 org.springframework.web.SpringServletContainerInitializer 实现了Servlet 3.0中的 ServletContainerInitializer 接口。 SpringServletContainerInitializer 则会在初始化的时候去加载所有的实现了 org.springframework.web.WebApplicationInitializer 的类。 用户通过实现该类即可创建和加载Servlet对象。
 2.1.2 创建单Spring容器的Servlet 官方代码示例如下：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 public class MyWebApplicationInitializer implements WebApplicationInitializer { @Override public void onStartup(ServletContext servletContext) { // Load Spring web application configuration AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext(); context.</description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  public class MyWebApplicationInitializer implements WebApplicationInitializer { @Override public void onStartup(ServletContext servletContext) { // Load Spring web application configuration  AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext(); context.</description>
     </item>
     
   </channel>

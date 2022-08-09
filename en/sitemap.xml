@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
     <loc>https://dennisxie.github.io/categories/</loc>
     <lastmod>2022-07-08T13:01:16+08:00</lastmod>
@@ -14,10 +15,14 @@
                 hreflang="en"
                 href="https://dennisxie.github.io/categories/"
                 />
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/post/tech/python/python_bindings_with_cython/</loc>
     <lastmod>2022-07-08T13:01:16+08:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/</loc>
     <lastmod>2022-07-08T13:01:16+08:00</lastmod>
     <xhtml:link
@@ -30,7 +35,9 @@
                 hreflang="en"
                 href="https://dennisxie.github.io/"
                 />
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/post/</loc>
     <lastmod>2022-07-08T13:01:16+08:00</lastmod>
     <xhtml:link
@@ -43,10 +50,14 @@
                 hreflang="en"
                 href="https://dennisxie.github.io/post/"
                 />
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/tags/python/</loc>
     <lastmod>2022-07-08T13:01:16+08:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/tags/</loc>
     <lastmod>2022-07-08T13:01:16+08:00</lastmod>
     <xhtml:link
@@ -59,7 +70,9 @@
                 hreflang="en"
                 href="https://dennisxie.github.io/tags/"
                 />
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/categories/tech/</loc>
     <lastmod>2022-07-08T13:01:16+08:00</lastmod>
     <xhtml:link
@@ -72,7 +85,9 @@
                 hreflang="en"
                 href="https://dennisxie.github.io/categories/tech/"
                 />
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/tags/docker/</loc>
     <lastmod>2022-06-21T16:32:52+08:00</lastmod>
     <xhtml:link
@@ -85,7 +100,9 @@
                 hreflang="en"
                 href="https://dennisxie.github.io/tags/docker/"
                 />
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/post/tech/docker/multi_stage_build/</loc>
     <lastmod>2022-06-21T16:32:52+08:00</lastmod>
     <xhtml:link
@@ -98,14 +115,21 @@
                 hreflang="en"
                 href="https://dennisxie.github.io/post/tech/docker/multi_stage_build/"
                 />
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/post/problems/hugo_integrity_problem/</loc>
     <lastmod>2022-06-09T12:39:44+08:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/tags/problem/</loc>
     <lastmod>2022-06-09T12:39:44+08:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/post/testpage/</loc>
     <lastmod>2022-06-08T17:40:14+08:00</lastmod>
   </url>
+  
 </urlset>

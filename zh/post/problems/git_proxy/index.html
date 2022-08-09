@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Git访问慢问题处理方法 | Dennis&#39;s Grocery</title>
+<meta name="keywords" content="problems">
+<meta name="description" content="问题 某些时候，我们拉取Git仓库的代码会遇到一些奇奇怪怪的网络问题。这些问题包含但不限于以下一些问题：
+ 拉取速度特别慢 一些莫名其妙的TLS问题 网络中断  处理方式 遇到以上问题可以尝试使用代理来解决。在Github上，远程仓库一般使用https协议或者ssh协议。下面分别提供两种协议的代理的配置方法。
+https协议 为Git命令行添加http代理配置即可，命令如下:
+1  git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port   运行该命令后, ~/.gitconfig文件中会增加如下的配置:
+[http] proxy = http://proxyUsername:proxyPassword@proxy.server.com:port 通过该方法可以解决https协议的远程仓库访问问题。
+ssh协议 使用ssh协议的仓库链接一般为 git@github.com:gituser/repository.git。这里User为git，Host为github.com。因为使用了ssh协议，配置一下ssh的代理即可。首先打开或者创建 ~/.ssh/config 文件。以Github为例，填入以下内容:
+Host github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p 如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。
+ tips: git@github.com:gituser/repository.git实际上是ssh://git@github.com/gituser/repository.git的简写
+ 其他问题 我自己是在WSL2中配置的代理，代理服务运行在Windows中。这里就出现了WSL2访问Windows的服务的问题。在WSL2中，可以使用$(hostname).local来获取到Windows的域名。由于Windows的防火墙问题，这时实际上还是不能访问成功。有以下几种解决方案可以尝试：
+  增加防火墙入站规则(这个方法在我本机上还没有实验通过)
+  配置公用配置文件的受保护的网络连接 取消掉图中WSL的网络连接。这个方法需要每次重启后配置一次，因为WSL这个网络需要WSL启动后才会出现。
+  配置允许通过防火墙的应用
+控制面板-&gt;系统和安全-&gt;Windows Defender 防火墙-&gt;允许的应用，把需要访问的服务的公有网络打开即可。如果你在用IDEA调试程序，那么你需要把Java的公有网络打开才能在WSL2里访问这个在调试的服务。
+  关闭公用网络防火墙
+  引用  Configure Git to use a proxy git 设置和取消代理  ">
+<meta name="author" content="Dennis Xie">
+<link rel="canonical" href="https://dennisxie.github.io/zh/post/problems/git_proxy/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.41f2d211c00e636a3c229c52ef2d4299a66891ae66771098993b13bca7972ae6.css" integrity="sha256-QfLSEcAOY2o8IpxS7y1CmaZoka5mdxCYmTsTvKeXKuY=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://dennisxie.github.io/images/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dennisxie.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dennisxie.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dennisxie.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dennisxie.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://dennisxie.github.io/zh/post/problems/git_proxy/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Git访问慢问题处理方法" />
+<meta property="og:description" content="问题 某些时候，我们拉取Git仓库的代码会遇到一些奇奇怪怪的网络问题。这些问题包含但不限于以下一些问题：
+ 拉取速度特别慢 一些莫名其妙的TLS问题 网络中断  处理方式 遇到以上问题可以尝试使用代理来解决。在Github上，远程仓库一般使用https协议或者ssh协议。下面分别提供两种协议的代理的配置方法。
+https协议 为Git命令行添加http代理配置即可，命令如下:
+1  git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port   运行该命令后, ~/.gitconfig文件中会增加如下的配置:
+[http] proxy = http://proxyUsername:proxyPassword@proxy.server.com:port 通过该方法可以解决https协议的远程仓库访问问题。
+ssh协议 使用ssh协议的仓库链接一般为 git@github.com:gituser/repository.git。这里User为git，Host为github.com。因为使用了ssh协议，配置一下ssh的代理即可。首先打开或者创建 ~/.ssh/config 文件。以Github为例，填入以下内容:
+Host github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p 如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。
+ tips: git@github.com:gituser/repository.git实际上是ssh://git@github.com/gituser/repository.git的简写
+ 其他问题 我自己是在WSL2中配置的代理，代理服务运行在Windows中。这里就出现了WSL2访问Windows的服务的问题。在WSL2中，可以使用$(hostname).local来获取到Windows的域名。由于Windows的防火墙问题，这时实际上还是不能访问成功。有以下几种解决方案可以尝试：
+  增加防火墙入站规则(这个方法在我本机上还没有实验通过)
+  配置公用配置文件的受保护的网络连接 取消掉图中WSL的网络连接。这个方法需要每次重启后配置一次，因为WSL这个网络需要WSL启动后才会出现。
+  配置允许通过防火墙的应用
+控制面板-&gt;系统和安全-&gt;Windows Defender 防火墙-&gt;允许的应用，把需要访问的服务的公有网络打开即可。如果你在用IDEA调试程序，那么你需要把Java的公有网络打开才能在WSL2里访问这个在调试的服务。
+  关闭公用网络防火墙
+  引用  Configure Git to use a proxy git 设置和取消代理  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dennisxie.github.io/zh/post/problems/git_proxy/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-08-09T16:05:32&#43;08:00" />
+<meta property="article:modified_time" content="2022-08-09T16:05:32&#43;08:00" /><meta property="og:site_name" content="Software Engineering" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git访问慢问题处理方法"/>
+<meta name="twitter:description" content="问题 某些时候，我们拉取Git仓库的代码会遇到一些奇奇怪怪的网络问题。这些问题包含但不限于以下一些问题：
+ 拉取速度特别慢 一些莫名其妙的TLS问题 网络中断  处理方式 遇到以上问题可以尝试使用代理来解决。在Github上，远程仓库一般使用https协议或者ssh协议。下面分别提供两种协议的代理的配置方法。
+https协议 为Git命令行添加http代理配置即可，命令如下:
+1  git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port   运行该命令后, ~/.gitconfig文件中会增加如下的配置:
+[http] proxy = http://proxyUsername:proxyPassword@proxy.server.com:port 通过该方法可以解决https协议的远程仓库访问问题。
+ssh协议 使用ssh协议的仓库链接一般为 git@github.com:gituser/repository.git。这里User为git，Host为github.com。因为使用了ssh协议，配置一下ssh的代理即可。首先打开或者创建 ~/.ssh/config 文件。以Github为例，填入以下内容:
+Host github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p 如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。
+ tips: git@github.com:gituser/repository.git实际上是ssh://git@github.com/gituser/repository.git的简写
+ 其他问题 我自己是在WSL2中配置的代理，代理服务运行在Windows中。这里就出现了WSL2访问Windows的服务的问题。在WSL2中，可以使用$(hostname).local来获取到Windows的域名。由于Windows的防火墙问题，这时实际上还是不能访问成功。有以下几种解决方案可以尝试：
+  增加防火墙入站规则(这个方法在我本机上还没有实验通过)
+  配置公用配置文件的受保护的网络连接 取消掉图中WSL的网络连接。这个方法需要每次重启后配置一次，因为WSL这个网络需要WSL启动后才会出现。
+  配置允许通过防火墙的应用
+控制面板-&gt;系统和安全-&gt;Windows Defender 防火墙-&gt;允许的应用，把需要访问的服务的公有网络打开即可。如果你在用IDEA调试程序，那么你需要把Java的公有网络打开才能在WSL2里访问这个在调试的服务。
+  关闭公用网络防火墙
+  引用  Configure Git to use a proxy git 设置和取消代理  "/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Git访问慢问题处理方法",
+      "item": "https://dennisxie.github.io/zh/post/problems/git_proxy/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Git访问慢问题处理方法",
+  "name": "Git访问慢问题处理方法",
+  "description": "问题 某些时候，我们拉取Git仓库的代码会遇到一些奇奇怪怪的网络问题。这些问题包含但不限于以下一些问题：\n 拉取速度特别慢 一些莫名其妙的TLS问题 网络中断  处理方式 遇到以上问题可以尝试使用代理来解决。在Github上，远程仓库一般使用https协议或者ssh协议。下面分别提供两种协议的代理的配置方法。\nhttps协议 为Git命令行添加http代理配置即可，命令如下:\n1  git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port   运行该命令后, ~/.gitconfig文件中会增加如下的配置:\n[http] proxy = http://proxyUsername:proxyPassword@proxy.server.com:port 通过该方法可以解决https协议的远程仓库访问问题。\nssh协议 使用ssh协议的仓库链接一般为 git@github.com:gituser/repository.git。这里User为git，Host为github.com。因为使用了ssh协议，配置一下ssh的代理即可。首先打开或者创建 ~/.ssh/config 文件。以Github为例，填入以下内容:\nHost github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p 如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。\n tips: git@github.com:gituser/repository.git实际上是ssh://git@github.com/gituser/repository.git的简写\n 其他问题 我自己是在WSL2中配置的代理，代理服务运行在Windows中。这里就出现了WSL2访问Windows的服务的问题。在WSL2中，可以使用$(hostname).local来获取到Windows的域名。由于Windows的防火墙问题，这时实际上还是不能访问成功。有以下几种解决方案可以尝试：\n  增加防火墙入站规则(这个方法在我本机上还没有实验通过)\n  配置公用配置文件的受保护的网络连接 取消掉图中WSL的网络连接。这个方法需要每次重启后配置一次，因为WSL这个网络需要WSL启动后才会出现。\n  配置允许通过防火墙的应用\n控制面板-\u0026gt;系统和安全-\u0026gt;Windows Defender 防火墙-\u0026gt;允许的应用，把需要访问的服务的公有网络打开即可。如果你在用IDEA调试程序，那么你需要把Java的公有网络打开才能在WSL2里访问这个在调试的服务。\n  关闭公用网络防火墙\n  引用  Configure Git to use a proxy git 设置和取消代理  ",
+  "keywords": [
+    "problems"
+  ],
+  "articleBody": "问题 某些时候，我们拉取Git仓库的代码会遇到一些奇奇怪怪的网络问题。这些问题包含但不限于以下一些问题：\n 拉取速度特别慢 一些莫名其妙的TLS问题 网络中断  处理方式 遇到以上问题可以尝试使用代理来解决。在Github上，远程仓库一般使用https协议或者ssh协议。下面分别提供两种协议的代理的配置方法。\nhttps协议 为Git命令行添加http代理配置即可，命令如下:\n1  git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port   运行该命令后, ~/.gitconfig文件中会增加如下的配置:\n[http] proxy = http://proxyUsername:proxyPassword@proxy.server.com:port 通过该方法可以解决https协议的远程仓库访问问题。\nssh协议 使用ssh协议的仓库链接一般为 git@github.com:gituser/repository.git。这里User为git，Host为github.com。因为使用了ssh协议，配置一下ssh的代理即可。首先打开或者创建 ~/.ssh/config 文件。以Github为例，填入以下内容:\nHost github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p 如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。\n tips: git@github.com:gituser/repository.git实际上是ssh://git@github.com/gituser/repository.git的简写\n 其他问题 我自己是在WSL2中配置的代理，代理服务运行在Windows中。这里就出现了WSL2访问Windows的服务的问题。在WSL2中，可以使用$(hostname).local来获取到Windows的域名。由于Windows的防火墙问题，这时实际上还是不能访问成功。有以下几种解决方案可以尝试：\n  增加防火墙入站规则(这个方法在我本机上还没有实验通过)\n  配置公用配置文件的受保护的网络连接 取消掉图中WSL的网络连接。这个方法需要每次重启后配置一次，因为WSL这个网络需要WSL启动后才会出现。\n  配置允许通过防火墙的应用\n控制面板-系统和安全-Windows Defender 防火墙-允许的应用，把需要访问的服务的公有网络打开即可。如果你在用IDEA调试程序，那么你需要把Java的公有网络打开才能在WSL2里访问这个在调试的服务。\n  关闭公用网络防火墙\n  引用  Configure Git to use a proxy git 设置和取消代理  ",
+  "wordCount" : "62",
+  "inLanguage": "zh",
+  "datePublished": "2022-08-09T16:05:32+08:00",
+  "dateModified": "2022-08-09T16:05:32+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Dennis Xie"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dennisxie.github.io/zh/post/problems/git_proxy/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Dennis's Grocery",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dennisxie.github.io/images/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dennisxie.github.io/zh/" accesskey="h" title="Dennis&#39;s Grocery (Alt + H)">Dennis&#39;s Grocery</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://dennisxie.github.io/" title="English"
+                            aria-label="English">En</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dennisxie.github.io/zh/categories/tech/" title="技术">
+                    <span>技术</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dennisxie.github.io/zh/categories/recipe/" title="美食">
+                    <span>美食</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dennisxie.github.io/zh/categories/other/" title="其他">
+                    <span>其他</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://dennisxie.github.io/zh/">主页</a></div>
+    <h1 class="post-title">
+      Git访问慢问题处理方法
+    </h1>
+    <div class="post-meta"><span title='2022-08-09 16:05:32 +0800 CST'>August 9, 2022</span>&nbsp;·&nbsp;Dennis Xie
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="问题">问题<a hidden class="anchor" aria-hidden="true" href="#问题">#</a></h1>
+<p>某些时候，我们拉取Git仓库的代码会遇到一些奇奇怪怪的网络问题。这些问题包含但不限于以下一些问题：</p>
+<ol>
+<li>拉取速度特别慢</li>
+<li>一些莫名其妙的TLS问题</li>
+<li>网络中断</li>
+</ol>
+<h1 id="处理方式">处理方式<a hidden class="anchor" aria-hidden="true" href="#处理方式">#</a></h1>
+<p>遇到以上问题可以尝试使用代理来解决。在Github上，远程仓库一般使用https协议或者ssh协议。下面分别提供两种协议的代理的配置方法。</p>
+<h2 id="https协议">https协议<a hidden class="anchor" aria-hidden="true" href="#https协议">#</a></h2>
+<p>为Git命令行添加http代理配置即可，命令如下:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port
+</code></pre></td></tr></table>
+</div>
+</div><p>运行该命令后, ~/.gitconfig文件中会增加如下的配置:</p>
+<pre><code>[http]
+        proxy = http://proxyUsername:proxyPassword@proxy.server.com:port
+</code></pre><p>通过该方法可以解决https协议的远程仓库访问问题。</p>
+<h2 id="ssh协议">ssh协议<a hidden class="anchor" aria-hidden="true" href="#ssh协议">#</a></h2>
+<p>使用ssh协议的仓库链接一般为 <em><a href="mailto:git@github.com">git@github.com</a>:gituser/repository.git</em>。这里User为git，Host为github.com。因为使用了ssh协议，配置一下ssh的代理即可。首先打开或者创建 <em>~/.ssh/config</em> 文件。以Github为例，填入以下内容:</p>
+<pre><code>Host github.com
+    User git
+    ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p
+</code></pre><p>如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。</p>
+<blockquote>
+<p><strong><em>tips: <a href="mailto:git@github.com">git@github.com</a>:gituser/repository.git实际上是ssh://git@github.com/gituser/repository.git的简写</em></strong></p>
+</blockquote>
+<h1 id="其他问题">其他问题<a hidden class="anchor" aria-hidden="true" href="#其他问题">#</a></h1>
+<p>我自己是在WSL2中配置的代理，代理服务运行在Windows中。这里就出现了WSL2访问Windows的服务的问题。在WSL2中，可以使用$(hostname).local来获取到Windows的域名。由于Windows的防火墙问题，这时实际上还是不能访问成功。有以下几种解决方案可以尝试：</p>
+<ol>
+<li>
+<p>增加防火墙入站规则(这个方法在我本机上还没有实验通过)</p>
+</li>
+<li>
+<p>配置公用配置文件的受保护的网络连接
+<img loading="lazy" src="/images/post/problems/git_proxy/windows_defender.png" alt="image"  />
+</p>
+<p>取消掉图中WSL的网络连接。这个方法需要每次重启后配置一次，因为WSL这个网络需要WSL启动后才会出现。</p>
+</li>
+<li>
+<p>配置允许通过防火墙的应用</p>
+<p>控制面板-&gt;系统和安全-&gt;Windows Defender 防火墙-&gt;允许的应用，把需要访问的服务的公有网络打开即可。如果你在用IDEA调试程序，那么你需要把Java的公有网络打开才能在WSL2里访问这个在调试的服务。</p>
+</li>
+<li>
+<p>关闭公用网络防火墙</p>
+</li>
+</ol>
+<h1 id="引用">引用<a hidden class="anchor" aria-hidden="true" href="#引用">#</a></h1>
+<ol>
+<li><a href="https://gist.github.com/evantoli/f8c23a37eb3558ab8765">Configure Git to use a proxy</a></li>
+<li><a href="https://gist.github.com/laispace/666dd7b27e9116faece6">git 设置和取消代理</a></li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://dennisxie.github.io/zh/tags/problems/">problems</a></li>
+    </ul>
+  </footer>
+<div id="disqus_thread"></div>
+<script>
+    
+
+    var disqus_config = function () {
+    this.page.url = "https://dennisxie.github.io/zh/post/problems/git_proxy/";  
+    this.page.identifier = "02e07b86d9950726823604f7e85c41a0af0b2ff3"; 
+    };
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://dennisxie-pages.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://dennisxie.github.io/zh/">Dennis&#39;s Grocery</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
     <loc>https://dennisxie.github.io/zh/categories/</loc>
-    <lastmod>2022-06-21T16:38:22+08:00</lastmod>
+    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -14,9 +15,11 @@
                 hreflang="zh"
                 href="https://dennisxie.github.io/zh/categories/"
                 />
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/zh/</loc>
-    <lastmod>2022-06-21T16:38:22+08:00</lastmod>
+    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -27,7 +30,64 @@
                 hreflang="zh"
                 href="https://dennisxie.github.io/zh/"
                 />
-  </url><url>
+  </url>
+  
+  <url>
+    <loc>https://dennisxie.github.io/zh/post/problems/git_proxy/</loc>
+    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dennisxie.github.io/zh/post/</loc>
+    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://dennisxie.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://dennisxie.github.io/zh/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://dennisxie.github.io/zh/tags/problems/</loc>
+    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dennisxie.github.io/zh/tags/</loc>
+    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://dennisxie.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://dennisxie.github.io/zh/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://dennisxie.github.io/zh/categories/tech/</loc>
+    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://dennisxie.github.io/categories/tech/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://dennisxie.github.io/zh/categories/tech/"
+                />
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/zh/tags/docker/</loc>
     <lastmod>2022-06-21T16:38:22+08:00</lastmod>
     <xhtml:link
@@ -40,7 +100,9 @@
                 hreflang="zh"
                 href="https://dennisxie.github.io/zh/tags/docker/"
                 />
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/zh/post/tech/docker/multi_stage_build/</loc>
     <lastmod>2022-06-21T16:38:22+08:00</lastmod>
     <xhtml:link
@@ -53,50 +115,16 @@
                 hreflang="zh"
                 href="https://dennisxie.github.io/zh/post/tech/docker/multi_stage_build/"
                 />
-  </url><url>
-    <loc>https://dennisxie.github.io/zh/post/</loc>
-    <lastmod>2022-06-21T16:38:22+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://dennisxie.github.io/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://dennisxie.github.io/zh/post/"
-                />
-  </url><url>
-    <loc>https://dennisxie.github.io/zh/tags/</loc>
-    <lastmod>2022-06-21T16:38:22+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://dennisxie.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://dennisxie.github.io/zh/tags/"
-                />
-  </url><url>
-    <loc>https://dennisxie.github.io/zh/categories/tech/</loc>
-    <lastmod>2022-06-21T16:38:22+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://dennisxie.github.io/categories/tech/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://dennisxie.github.io/zh/categories/tech/"
-                />
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/zh/tags/java/</loc>
     <lastmod>2022-06-08T21:49:58+08:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://dennisxie.github.io/zh/post/tech/java/spring_web_containers/spring_web_containers/</loc>
     <lastmod>2022-06-08T21:49:58+08:00</lastmod>
   </url>
+  
 </urlset>

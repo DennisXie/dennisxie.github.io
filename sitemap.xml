@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>https://dennisxie.github.io/en/sitemap.xml</loc>
-    
-      <lastmod>2022-07-08T13:01:16+08:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://dennisxie.github.io/zh/sitemap.xml</loc>
-    
-      <lastmod>2022-06-21T16:38:22+08:00</lastmod>
-    
-  </sitemap>
-  
+	
+	<sitemap>
+	   	<loc>https://dennisxie.github.io/en/sitemap.xml</loc>
+		
+	   	<lastmod>2022-07-08T13:01:16+08:00</lastmod>
+		
+	</sitemap>
+	
+	<sitemap>
+	   	<loc>https://dennisxie.github.io/zh/sitemap.xml</loc>
+		
+	   	<lastmod>2022-08-09T16:05:32+08:00</lastmod>
+		
+	</sitemap>
+	
 </sitemapindex>
