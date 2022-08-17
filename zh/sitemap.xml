@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://dennisxie.github.io/zh/categories/</loc>
-    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+    <lastmod>2022-08-10T21:30:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -19,7 +19,7 @@
   
   <url>
     <loc>https://dennisxie.github.io/zh/</loc>
-    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+    <lastmod>2022-08-10T21:30:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -33,13 +33,8 @@
   </url>
   
   <url>
-    <loc>https://dennisxie.github.io/zh/post/problems/git_proxy/</loc>
-    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://dennisxie.github.io/zh/post/</loc>
-    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+    <lastmod>2022-08-10T21:30:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -53,13 +48,23 @@
   </url>
   
   <url>
-    <loc>https://dennisxie.github.io/zh/tags/problems/</loc>
-    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+    <loc>https://dennisxie.github.io/zh/tags/python/</loc>
+    <lastmod>2022-08-10T21:30:26+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://dennisxie.github.io/tags/python/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://dennisxie.github.io/zh/tags/python/"
+                />
   </url>
   
   <url>
     <loc>https://dennisxie.github.io/zh/tags/</loc>
-    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+    <lastmod>2022-08-10T21:30:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -74,7 +79,7 @@
   
   <url>
     <loc>https://dennisxie.github.io/zh/categories/tech/</loc>
-    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+    <lastmod>2022-08-10T21:30:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -85,6 +90,31 @@
                 hreflang="zh"
                 href="https://dennisxie.github.io/zh/categories/tech/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://dennisxie.github.io/zh/post/tech/python/python_bindings_with_cython/</loc>
+    <lastmod>2022-08-10T21:30:26+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://dennisxie.github.io/post/tech/python/python_bindings_with_cython/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://dennisxie.github.io/zh/post/tech/python/python_bindings_with_cython/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://dennisxie.github.io/zh/post/problems/git_proxy/</loc>
+    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dennisxie.github.io/zh/tags/problems/</loc>
+    <lastmod>2022-08-09T16:05:32+08:00</lastmod>
   </url>
   
   <url>

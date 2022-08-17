@@ -141,6 +141,25 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>使用Cython实现Python Bindings
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>背景 语言交互接口(FFI) 一般操作系统会提供系统调用的C API。这种说法其实并不正确，但是我们假设这个说法是正确的。毕竟很多Linux发行版都是自带了GCC编译器的，我们就简单的认为提供了系统调用的C API。然后我们思考一下这么一个问题，一个非C语言是怎么实现和操作系统交互的？主要有两种方式实现，一种是使用中断来实现系统调用，另外一种方式是间接使用C语言的系统调用API。
+间接调用C语言的API涉及到了语言交互接口(FFI, Foreign Function Interface)的概念。不少编程语言就通过使用FFI来实现系统调用。很多语言把FFI叫做&#34;Language Bindings”，比如Python Bindings。还有一些语言有自己的叫法，比如Java的JNI。通过使用FFI，像Python这些语言就可以比较简单的实现系统调用。
+Python Bindings Python Bindings可以让Python代码调用C API，或者在C程序中运行Python脚本。实现Python Bindings有两种基本的方式，分别如下：
+ 使用Python的标准库ctypes 使用CPython提供的库Python/C API  和很多基础库一样，这两个库都很底层，在业务代码中使用起来会比较复杂。我们可以用一些封装好的三方库来实现Python Bindings，比如使用Cython。
+使用Cython实现Python Bindings Cython简介 Cython是一种能够方便为Python编写C扩展的编程语言，其编译器可以将Cython代码编译为C代码。Cython兼容Python的所有语法且能编译成C，故Cython可以允许开发者通过Python式的代码来手动控制GIL。Cython其语法也允许开发者方便的使用C/C&#43;&#43;代码库。通过以下命令即可安装Cython。
+1  pip install Cython   Cython基础使用方法 Hello, World! 所有合法的Python语法都是合法的Cython语法，我们先写一个简单的例子保存到hello.pyx。
+1 2 3  # hello.pyx def say_hello_to(name): print(&#34;Hello %s&#34; % name)   接着写一下setup文件来编译和构建这个扩展。
+1 2 3 4 5 6 7  # setup.py from setuptools import setup from Cython.Build import cythonize setup( ext_modules = cythonize(&#34;hello....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-08-10 21:30:26 +0800 CST'>August 10, 2022</span>&nbsp;·&nbsp;Dennis Xie</footer>
+  <a class="entry-link" aria-label="post link to 使用Cython实现Python Bindings" href="https://dennisxie.github.io/zh/post/tech/python/python_bindings_with_cython/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>Git访问慢问题处理方法
     </h2>
   </header>
