@@ -6,7 +6,16 @@
     <description>Recent content in python on Dennis&#39;s Grocery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Aug 2022 21:30:26 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/zh/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Feb 2023 15:39:59 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/zh/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Timeouts and Cancellations for Humans</title>
+      <link>https://dennisxie.github.io/zh/post/tech/python/timeouts_and_cancellations_for_humans/</link>
+      <pubDate>Tue, 07 Feb 2023 15:39:59 +0800</pubDate>
+      
+      <guid>https://dennisxie.github.io/zh/post/tech/python/timeouts_and_cancellations_for_humans/</guid>
+      <description>作者介绍了目前的一些超时和取消的方案，提出了自己的取消域的方案，并介绍了一下自己的Trio库。</description>
+    </item>
+    
     <item>
       <title>使用Cython实现Python Bindings</title>
       <link>https://dennisxie.github.io/zh/post/tech/python/python_bindings_with_cython/</link>

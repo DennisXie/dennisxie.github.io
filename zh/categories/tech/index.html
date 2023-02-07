@@ -141,6 +141,23 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>Timeouts and Cancellations for Humans
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>说明：  原文出处Timeouts and cancellation for humans — njs blog (vorpus.org)。 译者以已经获得了原作者的允许以翻译该文章。 本文原作者为Nathaniel J. Smith，Trio库的作者，NumPy, PyPa相关项目的代码贡献者。 术语翻译说明：翻译内容可能混用，函数参数名会保留英文，常见词(如bug)不翻译。  primitive: 原语、底层函数 cancel scope: 取消域 cancel token: 取消令牌 timeout: 超时 deadline: 大家很习惯且考虑到翻译成截止时间比较啰嗦就不做翻译了。 shield: 没有想好如何翻译，就没有做翻译。 nursery: Trio中的一个启动子任务的系统，翻译成托儿所有点傻，就未做翻译。   其他翻译：见翻译说明 本文评论使用的是disqus  引言 你的代码可能完美无缺，但不幸的是外面的世界并不这么靠谱。有些时候，其他人的代码可能会崩溃或者卡住。网络会掉线，打印机会报错。你的代码也需要为这些情况做好准备。每当你从网络读取数据、尝试获取跨进程锁、或者发送一条HTTP请求，你至少要考虑到以下三种可能：
+ 请求可能成功 请求可能失败 请求可能挂起。春去秋来，没有成功，没有失败，没有任何响应。  前面两种情况非常直观。最后一种情况你需要使用超时来处理。几乎每一处你与其他进程、系统通信的地方都需要设置超时，如果你没有设置超时，那就是一个潜在的bug。
+说实话，如果你也像大多数开发者一样，那么你的代码可能会有很多因为缺失超时导致的bug，我的代码也是这样的。因为正确进行I/O操作非常常见且重要，你可能觉得任何一种编程环境都能为所有操作提供简单而健壮的设置超时的方法。但奇怪的是，事实并不如此。大多数带超时的API都非常单调且容易出错，以至于要求开发人员把这些弄对是不切实际的。所以别难过，你的代码有这些超时相关的bug并不是你的错，而是那些I/O库的错！
+我目前正在写一个I/O库。和其他任何I/O库都不一样，这个I/O库的所有卖点是它痴迷于简单易用。我想让你能够在使用Trio时，能够简单而又正确地对任意I/O操作应用超时。但是，用户友好的超时API是一件很棘手的事。所以我会在这篇博客中深入讨论各种可能的设计，特别是那些给我提供灵感的设计。接下来我会介绍我想到的设计，以及为什么我会认为该设计是古老的”状态艺术”的一个切实优化。最后，我将会讨论为什么Trio库的思路为适应面更广，同时我将会给出一个不错的同步Python的原型实现。
+那么超时处理有什么难的呢？
+目录:  简单的超时机制不支持抽象 绝对的deadline是可组合的(但是用起来很麻烦) 取消令牌(Cancel tokens)  取消令牌封装了取消状态 取消令牌属于水平触发，可以根据你程序的需要来确定范围 实际上因为人类的懒惰取消令牌并不可靠   取消域: Trio关于超时和取消的人性化方案  取消域(Cancel scope)是如何工作的 我们需要在哪些地方检查取消？ 一个逃逸口(escape hatch) 取消域与并发 小结   还有哪些地方可以从取消域中受益？  同步、单线程Python asyncio 其他语言   现在去修复你的超时bug！ 注释 翻译说明  简单的超时机制不支持抽象 最简单的处理超时的方式无疑是给每个可能阻塞的函数加上timeout参数。在Python标准库中，你可以找到像threading....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-07 15:39:59 +0800 CST'>February 7, 2023</span>&nbsp;·&nbsp;Author Nathaniel J. Smith, translated by Dennis</footer>
+  <a class="entry-link" aria-label="post link to Timeouts and Cancellations for Humans" href="https://dennisxie.github.io/zh/post/tech/python/timeouts_and_cancellations_for_humans/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>使用Cython实现Python Bindings
     </h2>
   </header>
@@ -170,7 +187,7 @@ https协议 为Git命令行添加http代理配置即可，命令如下:
 1  git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port   运行该命令后, ~/.gitconfig文件中会增加如下的配置:
 [http] proxy = http://proxyUsername:proxyPassword@proxy.server.com:port 通过该方法可以解决https协议的远程仓库访问问题。
 ssh协议 使用ssh协议的仓库链接一般为 git@github.com:gituser/repository.git。这里User为git，Host为github.com。因为使用了ssh协议，配置一下ssh的代理即可。首先打开或者创建 ~/.ssh/config 文件。以Github为例，填入以下内容:
-Host github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p 如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。
+Host *.github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p 如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。
  tips: git@github.com:gituser/repository.git实际上是ssh://git@github.com/gituser/repository.git的简写
  其他问题 我自己是在WSL2中配置的代理，代理服务运行在Windows中。这里就出现了WSL2访问Windows的服务的问题。在WSL2中，可以使用$(hostname).local来获取到Windows的域名。由于Windows的防火墙问题，这时实际上还是不能访问成功。有以下几种解决方案可以尝试：
   增加防火墙入站规则(这个方法在我本机上还没有实验通过)
@@ -221,7 +238,7 @@ Host github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %
     </main>
     
 <footer class="footer">
-    <span>&copy; 2022 <a href="https://dennisxie.github.io/zh/">Dennis&#39;s Grocery</a></span>
+    <span>&copy; 2023 <a href="https://dennisxie.github.io/zh/">Dennis&#39;s Grocery</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Dennis&#39;s Grocery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Aug 2022 20:13:03 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/zh/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Feb 2023 15:39:59 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/zh/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Timeouts and Cancellations for Humans</title>
+      <link>https://dennisxie.github.io/zh/post/tech/python/timeouts_and_cancellations_for_humans/</link>
+      <pubDate>Tue, 07 Feb 2023 15:39:59 +0800</pubDate>
+      
+      <guid>https://dennisxie.github.io/zh/post/tech/python/timeouts_and_cancellations_for_humans/</guid>
+      <description>作者介绍了目前的一些超时和取消的方案，提出了自己的取消域的方案，并介绍了一下自己的Trio库。</description>
+    </item>
+    
     <item>
       <title>Max Factory POP UP PARADE 为美好的世界献上祝福！红传说 慧慧 开箱</title>
       <link>https://dennisxie.github.io/zh/post/other/figure/maxfactory_pop_up_konosuba_megumin/</link>
@@ -38,7 +47,7 @@ https协议 为Git命令行添加http代理配置即可，命令如下:
 1  git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port   运行该命令后, ~/.gitconfig文件中会增加如下的配置:
 [http] proxy = http://proxyUsername:proxyPassword@proxy.server.com:port 通过该方法可以解决https协议的远程仓库访问问题。
 ssh协议 使用ssh协议的仓库链接一般为 git@github.com:gituser/repository.git。这里User为git，Host为github.com。因为使用了ssh协议，配置一下ssh的代理即可。首先打开或者创建 ~/.ssh/config 文件。以Github为例，填入以下内容:
-Host github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p 如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。
+Host *.github.com User git ProxyCommand nc -v -x {proxy.server.com or ip}:{port} %h %p 如果要针对其他Git仓库代理，Host需要修改成对应域名，User也需要以仓库的地址为准。这里的代理命令使用了nc命令，所以需要系统装了netcat才行。
  tips: git@github.com:gituser/repository.git实际上是ssh://git@github.com/gituser/repository.git的简写
  其他问题 我自己是在WSL2中配置的代理，代理服务运行在Windows中。这里就出现了WSL2访问Windows的服务的问题。在WSL2中，可以使用$(hostname).local来获取到Windows的域名。由于Windows的防火墙问题，这时实际上还是不能访问成功。有以下几种解决方案可以尝试：
   增加防火墙入站规则(这个方法在我本机上还没有实验通过)

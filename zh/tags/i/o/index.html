@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>I/O | Dennis&#39;s Grocery</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://dennisxie.github.io/zh/tags/i/o/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.41f2d211c00e636a3c229c52ef2d4299a66891ae66771098993b13bca7972ae6.css" integrity="sha256-QfLSEcAOY2o8IpxS7y1CmaZoka5mdxCYmTsTvKeXKuY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://dennisxie.github.io/images/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dennisxie.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dennisxie.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dennisxie.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dennisxie.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://dennisxie.github.io/zh/tags/i/o/index.xml">
+<link rel="alternate" hreflang="zh" href="https://dennisxie.github.io/zh/tags/i/o/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="I/O" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dennisxie.github.io/zh/tags/i/o/" /><meta property="og:site_name" content="Software Engineering" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="I/O"/>
+<meta name="twitter:description" content=""/>
+
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dennisxie.github.io/zh/" accesskey="h" title="Dennis&#39;s Grocery (Alt + H)">Dennis&#39;s Grocery</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://dennisxie.github.io/" title="English"
+                            aria-label="English">En</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dennisxie.github.io/zh/categories/tech/" title="技术">
+                    <span>技术</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dennisxie.github.io/zh/categories/recipe/" title="美食">
+                    <span>美食</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dennisxie.github.io/zh/categories/other/" title="其他">
+                    <span>其他</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://dennisxie.github.io/zh/">主页</a></div>
+  <h1>
+    I/O
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>Timeouts and Cancellations for Humans
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>说明：  原文出处Timeouts and cancellation for humans — njs blog (vorpus.org)。 译者以已经获得了原作者的允许以翻译该文章。 本文原作者为Nathaniel J. Smith，Trio库的作者，NumPy, PyPa相关项目的代码贡献者。 术语翻译说明：翻译内容可能混用，函数参数名会保留英文，常见词(如bug)不翻译。  primitive: 原语、底层函数 cancel scope: 取消域 cancel token: 取消令牌 timeout: 超时 deadline: 大家很习惯且考虑到翻译成截止时间比较啰嗦就不做翻译了。 shield: 没有想好如何翻译，就没有做翻译。 nursery: Trio中的一个启动子任务的系统，翻译成托儿所有点傻，就未做翻译。   其他翻译：见翻译说明 本文评论使用的是disqus  引言 你的代码可能完美无缺，但不幸的是外面的世界并不这么靠谱。有些时候，其他人的代码可能会崩溃或者卡住。网络会掉线，打印机会报错。你的代码也需要为这些情况做好准备。每当你从网络读取数据、尝试获取跨进程锁、或者发送一条HTTP请求，你至少要考虑到以下三种可能：
+ 请求可能成功 请求可能失败 请求可能挂起。春去秋来，没有成功，没有失败，没有任何响应。  前面两种情况非常直观。最后一种情况你需要使用超时来处理。几乎每一处你与其他进程、系统通信的地方都需要设置超时，如果你没有设置超时，那就是一个潜在的bug。
+说实话，如果你也像大多数开发者一样，那么你的代码可能会有很多因为缺失超时导致的bug，我的代码也是这样的。因为正确进行I/O操作非常常见且重要，你可能觉得任何一种编程环境都能为所有操作提供简单而健壮的设置超时的方法。但奇怪的是，事实并不如此。大多数带超时的API都非常单调且容易出错，以至于要求开发人员把这些弄对是不切实际的。所以别难过，你的代码有这些超时相关的bug并不是你的错，而是那些I/O库的错！
+我目前正在写一个I/O库。和其他任何I/O库都不一样，这个I/O库的所有卖点是它痴迷于简单易用。我想让你能够在使用Trio时，能够简单而又正确地对任意I/O操作应用超时。但是，用户友好的超时API是一件很棘手的事。所以我会在这篇博客中深入讨论各种可能的设计，特别是那些给我提供灵感的设计。接下来我会介绍我想到的设计，以及为什么我会认为该设计是古老的”状态艺术”的一个切实优化。最后，我将会讨论为什么Trio库的思路为适应面更广，同时我将会给出一个不错的同步Python的原型实现。
+那么超时处理有什么难的呢？
+目录:  简单的超时机制不支持抽象 绝对的deadline是可组合的(但是用起来很麻烦) 取消令牌(Cancel tokens)  取消令牌封装了取消状态 取消令牌属于水平触发，可以根据你程序的需要来确定范围 实际上因为人类的懒惰取消令牌并不可靠   取消域: Trio关于超时和取消的人性化方案  取消域(Cancel scope)是如何工作的 我们需要在哪些地方检查取消？ 一个逃逸口(escape hatch) 取消域与并发 小结   还有哪些地方可以从取消域中受益？  同步、单线程Python asyncio 其他语言   现在去修复你的超时bug！ 注释 翻译说明  简单的超时机制不支持抽象 最简单的处理超时的方式无疑是给每个可能阻塞的函数加上timeout参数。在Python标准库中，你可以找到像threading....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-07 15:39:59 +0800 CST'>February 7, 2023</span>&nbsp;·&nbsp;Author Nathaniel J. Smith, translated by Dennis</footer>
+  <a class="entry-link" aria-label="post link to Timeouts and Cancellations for Humans" href="https://dennisxie.github.io/zh/post/tech/python/timeouts_and_cancellations_for_humans/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://dennisxie.github.io/zh/">Dennis&#39;s Grocery</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>async programming on Dennis&#39;s Grocery</title>
+    <link>https://dennisxie.github.io/zh/tags/async-programming/</link>
+    <description>Recent content in async programming on Dennis&#39;s Grocery</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Feb 2023 15:39:59 +0800</lastBuildDate><atom:link href="https://dennisxie.github.io/zh/tags/async-programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Timeouts and Cancellations for Humans</title>
+      <link>https://dennisxie.github.io/zh/post/tech/python/timeouts_and_cancellations_for_humans/</link>
+      <pubDate>Tue, 07 Feb 2023 15:39:59 +0800</pubDate>
+      
+      <guid>https://dennisxie.github.io/zh/post/tech/python/timeouts_and_cancellations_for_humans/</guid>
+      <description>作者介绍了目前的一些超时和取消的方案，提出了自己的取消域的方案，并介绍了一下自己的Trio库。</description>
+    </item>
+    
+  </channel>
+</rss>
